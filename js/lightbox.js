@@ -40,3 +40,38 @@ for(let i = 0; i < smallItems.length; i++) {
         makePopup(i);
     });
 }
+function makeButton() {
+    const makeLoginPopupButton = document.createElement('i');
+    makeLoginPopupButton.className = 'fas fa-sign-in-alt login-button';
+    document.body.prepend(makeLoginPopupButton);
+    makeLoginPopupButton.addEventListener('click', makeLoginPopup);
+}
+
+const loginPopup = document.querySelectorAll('.login-popup');
+const loginPopupArray = [];
+
+for(let i = 0; i < loginPopup.length; i++) {
+    loginPopupArray.push(loginPopup[i]);
+    // Remove element from DOM //
+    loginPopup[i].remove();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+}
+
+function makeLoginPopup() {
+    console.log('opened');
+    let loginPopup = document.createElement('div');
+    loginPopup.id = 'login-popup';
+    loginPopup.addEventListener('click', closeLoginPopup);
+    document.body.append(loginPopup);
+
+    let loginPopupContent = document.createElement('div');
+    loginPopupContent.className = 'loginPopupContent';
+    loginPopupContent.innerHTML = loginPopupArray[0].innerHTML;
+    loginPopupContent.addEventListener('click', function(x){
+        x.stopPropagation();
+    })
+    loginPopup.append(loginPopupContent);
+}
+
+function closeLoginPopup() {
+    document.getElementById('login-popup').remove();
+}
