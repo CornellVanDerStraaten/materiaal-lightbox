@@ -1,3 +1,6 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap');
 body {
     margin: 0;
     min-height: 100vh;
@@ -15,6 +18,48 @@ img {
 }
 main{
     padding: 1em 2em;
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+}
+.small {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
+}
+.small img {
+    height: 200px;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    /* vastzetten op eerste rij en eerste kolom */
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+}
+.small p {
+    /* paragraaf ook op eerste rij en eerste kolom */
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 900;
+    text-shadow: 0 0 3px #000;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-family: 'Open Sans', cursive;
 }
 .validatie img {
     height: 1em;
@@ -23,3 +68,50 @@ main{
     margin: 0 .3em;
     cursor: pointer;
 }
+
+ #popup {
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100vh;
+     width: 100vw;
+     background: rgba(0,0,0,0.6);
+     display: -ms-grid;
+     display: grid;
+     -webkit-box-align: center;
+         -ms-flex-align: center;
+             align-items: center;
+     -webkit-box-pack: center;
+         -ms-flex-pack: center;
+             justify-content: center;
+ }
+
+ .popupContent {
+     background-color: #fff;
+     padding: 1em 2em;
+     max-width: 50vw;
+     max-height: calc(90vh - 2em);
+     margin-top: 1em;
+     overflow: auto;
+     -webkit-animation: popupAnimation .7s cubic-bezier(.17,.67,.62,1.48);
+             animation: popupAnimation .7s cubic-bezier(.17,.67,.62,1.48);
+ }
+
+ .sk {
+     float: right;
+     font-size: 1.5em;
+     cursor: pointer;
+ }
+ .sk:hover {
+    color: red;
+ }
+
+ @-webkit-keyframes popupAnimation {
+     0% {margin-top: 100vh;}
+     100% {margin-top: 0;}
+ }
+
+ @keyframes popupAnimation {
+     0% {margin-top: 100vh;}
+     100% {margin-top: 0;}
+ }
